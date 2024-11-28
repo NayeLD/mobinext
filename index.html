@@ -275,80 +275,71 @@
 
     <section id="factura">
         <h2>Generar Factura</h2>
-        <form id="formulario-factura">
+        <form id="formularioFactura">
             <label for="servicio">Servicio:</label>
-            <select id="servicio" required>
-                <option value="Telefonía Fija">Telefonía Fija</option>
-                <option value="Telefonía Móvil">Telefonía Móvil</option>
+            <select id="servicio" name="servicio">
+                <option value="Telefonía fija">Telefonía fija</option>
+                <option value="Telefonía móvil">Telefonía móvil</option>
                 <option value="Internet">Internet</option>
-                <option value="Televisión">Televisión</option>
+                <option value="Televisión de pago">Televisión de pago</option>
+                <option value="Servicios de datos">Servicios de datos</option>
             </select>
-            <label for="monto">Monto (Bs):</label>
-            <input type="number" id="monto" required>
-            <label for="metodo-pago">Método de pago:</label>
-            <select id="metodo-pago" required>
-                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
-                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
-                <option value="Pago en Tienda">Pago en Tienda</option>
+
+            <label for="monto">Monto (en Bs):</label>
+            <input type="number" id="monto" name="monto" required>
+
+            <label for="metodoPago">Método de pago:</label>
+            <select id="metodoPago" name="metodoPago">
+                <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+                <option value="Transferencia bancaria">Transferencia bancaria</option>
+                <option value="Efectivo">Efectivo</option>
             </select>
+
             <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" required>
-            <button type="submit">Generar Factura</button>
+            <input type="text" id="fecha" name="fecha" value="2024-11-27" disabled>
+
+            <button type="submit">Generar factura</button>
         </form>
 
-        <div class="factura-container" id="factura-container">
+        <div class="factura-container" id="facturaContainer">
             <h3>Factura Generada</h3>
-            <p id="factura-detalle"></p>
+            <p><strong>Servicio:</strong> <span id="facturaServicio"></span></p>
+            <p><strong>Monto:</strong> Bs. <span id="facturaMonto"></span></p>
+            <p><strong>Método de pago:</strong> <span id="facturaMetodoPago"></span></p>
+            <p><strong>Fecha:</strong> <span id="facturaFecha"></span></p>
         </div>
     </section>
-
-    <section id="contacto">
-        <h2>Contacto</h2>
-
-  <p>Puedes contactarnos a través de nuestro correo electrónico o visitar nuestras redes sociales:</p>
-       
- <a href="https://www.facebook.com/share/JKaW1C4xk4BryLkW/?mibextid=qi2Omg" target="_blank">
-            <img src="ruta_a_tu_icono_de_facebook" alt="Facebook">
-       </a>
-       
- <a href="https://www.instagram.com/mobinext_18?igsh=MWpuMDAydmt3NjZzdw==" target="_blank">
-            <img src="ruta_a_tu_icono_de_instagram" alt="Instagram">
-        </a>
-  
-      <a href="mailto:m82465878@gmail.com">
-           
- <img src="ruta_a_tu_icono_de_email" alt="Email">
-        </a>
-    
-    <a href="https://www.tiktok.com/@mobinext0?_t=8qEgcn4xDKo&_r=1" target="_blank">
-            <img src="ruta_a_tu_icono_de_tiktok" alt="TikTok">
-        </a>
-   
- </section>
-
-
-
-        <p>Si tienes alguna consulta, puedes ponerte en contacto con nosotros a través del siguiente formulario:</p>
-        <form action="#">
-            <input type="text" name="nombre" placeholder="Tu nombre" required>
-            <input type="email" name="email" placeholder="Tu email" required>
-            <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-</div>
-
-<div class="gif-container">
-    <img src="https://fondos-animados.com/gifs/2020/08/20193/gif-gatitos-muy-tiernos.gif" alt="gif de gatitos">
 </div>
 
 <footer>
-    <p>&copy; 2024 Mobinext - Todos los derechos reservados</p>
+    <p>&copy; 2024 Mobinext. Todos los derechos reservados.</p>
 </footer>
 
-</body>
-</html>
+<script>
+    // Manejo del formulario y generación de factura
+    document.getElementById('formularioFactura').addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita que se recargue la página
 
+        // Obtener los valores del formulario
+        const servicio = document.getElementById('servicio').value;
+        const monto = document.getElementById('monto').value;
+        const metodoPago = document.getElementById('metodoPago').value;
+        const fecha = document.getElementById('fecha').value;
+
+        // Mostrar los datos en la factura
+        document.getElementById('facturaServicio').textContent = servicio;
+        document.getElementById('facturaMonto').textContent = monto;
+        document.getElementById('facturaMetodoPago').textContent = metodoPago;
+        document.getElementById('facturaFecha').textContent = fecha;
+
+        // Hacer visible la sección de la factura
+        document.getElementById('facturaContainer').style.display = 'block';
+    });
+</script>
+
+</body>
+
+</html>
 
 
 
